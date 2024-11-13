@@ -1,5 +1,5 @@
 import { redirect } from 'react-router-dom';
-
+import { jwtDecode } from 'jwt-decode';
 export function getTokenDuration() {
   const storedExpirationDate = localStorage.getItem('expiration');
   const expirationDate = new Date(storedExpirationDate);
@@ -33,6 +33,29 @@ export function checkAuthLoader() {
   const token = getAuthToken();
 
   if (!token) {
-    return redirect('/auth');
+    return redirect('/auth?mode=login');
   }
+  return null;
+}
+
+export function getUserRole() {
+  const token = localStorage.getItem('token');
+  
+  if (!token) {
+    return null;  
+  }
+
+  try {
+    const decodedToken = jwtDecode(token);
+    
+    return decodedToken.user_type || null;  
+  } catch (error) {
+    console.error("Error decoding token:", error);
+    return null;  
+  }
+}
+
+export function isManager() {
+  const role = getUserRole();
+  return role === 'manager';  // Adjust according to your role definition
 }

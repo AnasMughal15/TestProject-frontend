@@ -36,7 +36,9 @@ import {
             <label htmlFor="image">Password</label>
             <input id="password" type="password" name="password" required />
           </p>
-          <p>
+          {!isLogin &&
+          <div>
+            <p>
             <label htmlFor="name">Name</label>
             <input id="name" type="name" name="name" required />
           </p>
@@ -75,6 +77,8 @@ import {
               </div>
             </div>
           </div>
+          </div>
+          }
 
           <div className={classes.actions}>
             <Link to={`?mode=${isLogin ? "signup" : "login"}`}>

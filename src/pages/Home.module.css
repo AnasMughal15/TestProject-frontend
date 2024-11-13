@@ -1,0 +1,52 @@
+.buttonCreate {
+  color: red !important;
+  background-color: transparent !important;
+  border: 2px solid #FAB833 !important;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 15% !important; /* Position from the left edge */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); 
+  width: auto; /* Let width adjust based on content */
+}
+
+.buttonCreate:hover {
+  background-color: #FAB833 !important;
+  color: white !important;
+  border-color: #FAB833 !important;
+  cursor: pointer;
+}
+
+.buttonCreate:active {
+  transform: scale(0.98); /* Slightly reduce size when clicked */
+}
+
+/* Responsiveness: Adjust the button position and size on smaller screens */
+@media (max-width: 1024px) {
+  .buttonCreate {
+    left: 10%; /* Move closer to left edge on medium screens */
+    font-size: 16px; /* Adjust font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .buttonCreate {
+    left: 5%; /* Adjust left position more for mobile screens */
+    width: 90%; /* Make it take up more width on mobile */
+    font-size: 18px; /* Adjust font size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .buttonCreate {
+    font-size: 20px; /* Larger font on very small screens */
+    left: 0; /* Reset left position to 0 on very small screens */
+    width: 100%; /* Full width on small mobile screens */
+    padding: 15px; /* Adjust padding */
+  }
+}

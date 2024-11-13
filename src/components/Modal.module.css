@@ -1,0 +1,94 @@
+/* Modal.module.css */
+
+.modalContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: var(--color-gray-900); /* Dark background */
+    color: var(--color-gray-100); /* Light text color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .modalHeader {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary-500); /* Accent color for header */
+    margin-bottom: 1rem;
+  }
+  
+  .modalInput {
+    width: 100%;
+    background-color: var(--color-gray-800); /* Dark input background */
+    color: var(--color-gray-100); /* Near white text color */
+    border: 1px solid var(--color-gray-700);
+    border-radius: 4px;
+  }
+  
+  .modalInput label {
+    color: rgba(255, 255, 255, 0.8); /* Near white for label */
+  }
+  
+  .modalInput .MuiInputBase-input {
+    color: var(--color-gray-100); /* Input text near-white */
+  }
+  
+  .modalInput:focus-within {
+    border-color: var(--color-primary-500); /* Border color on focus */
+  }
+  
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem; /* Ensures container has some padding */
+    box-sizing: border-box;
+  }
+  ._button_8jmoy_1 {
+    transform: none !important; /* Clear transform */
+    top: 0 !important;
+    left: 0 !important;
+  }
+  .buttonPrimary,
+  .buttonSecondary {
+    background: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transform: none !important; /* Explicitly remove any transform */
+    position: relative !important; /* Reset to normal flow */
+    top: auto !important; /* Reset any unintended offset */
+    left: auto !important;
+  }
+  
+  .buttonPrimary {
+    background-color: var(--color-primary-600);
+    color: var(--color-gray-900);
+    border: none;
+  }
+  
+  .buttonPrimary:hover {
+    background-color: var(--color-primary-700);
+  }
+  
+  .buttonSecondary {
+    background-color: transparent;
+    color: var(--color-gray-100);
+    border: 1px solid var(--color-gray-500);
+  }
+  
+  .buttonSecondary:hover {
+    background-color: var(--color-gray-700);
+  }
+  
+  
