@@ -35,7 +35,7 @@ export function checkAuthLoader() {
   if (!token) {
     return redirect('/auth?mode=login');
   }
-  return null;
+  return token;
 }
 
 export function getUserRole() {
@@ -57,5 +57,16 @@ export function getUserRole() {
 
 export function isManager() {
   const role = getUserRole();
-  return role === 'manager';  // Adjust according to your role definition
+  return role === 'manager'; 
 }
+
+export function isDeveloper() {
+  const role = getUserRole();
+  return role === 'developer';  
+}
+
+export function isQA() {
+  const role = getUserRole();
+  return role === 'qa'; 
+}
+

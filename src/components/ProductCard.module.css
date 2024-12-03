@@ -1,0 +1,51 @@
+.cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #242424;
+  }
+  
+  .card {
+    background-color: #333333 !important;
+    border-color: #444444;
+    color: white;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 16px;
+  }
+  
+  .cardTitle {
+    color: white;
+  }
+  
+  .managerName {
+    color: gray;
+    font-size: 14px;
+  }
+  
+  .cardDescription {
+    color: lightgray;
+  }
+  
+  .cardActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px; /* Adds space between buttons */
+    padding: 16px; /* Adds space inside the CardActions for the buttons */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .button {
+    color: #FAB833 !important;
+    border: 1px solid #FAB833 !important;
+    transition: all 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #FAB833;
+    color: white !important;
+  }
+  

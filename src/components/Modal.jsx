@@ -98,6 +98,11 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
             label="Project Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "var(--color-gray-100)", // Apply the input text color here
+              },
+            }}
             className={styles.modalInput}
           />
           <TextField
@@ -107,26 +112,40 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
             multiline
             rows={4}
             className={styles.modalInput}
+            sx={{
+              "& .MuiInputBase-input": {
+                color: "var(--color-gray-100)", // Apply the input text color here
+              },
+            }}
           />
           <Autocomplete
-            multiple
-            options={users}
-            getOptionLabel={(option) => option.name}
-            value={selectedUsers}
-            onChange={handleUserChange}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Assign Developers"
-                className={styles.modalInput}
-              />
-            )}
-            renderOption={(props, option) => (
-              <li {...props} key={option.id}> {/* Use the unique id as the key */}
-                {option.name}
-              </li>
-            )}
-          />
+  multiple
+  options={users}
+  getOptionLabel={(option) => option.name}
+  value={selectedUsers}
+  onChange={handleUserChange}
+  renderInput={(params) => (
+    <TextField
+      {...params}
+      label="Assign Developers"
+      className={styles.modalInput}
+    />
+  )}
+  renderOption={(props, option, state) => (
+    <li
+      {...props}
+      key={option.id}
+      sx={{
+        // Custom styles for the option
+        backgroundColor: state.selected ? 'rgba(0, 123, 255, 0.1)' : 'transparent', // Optional background color for selected
+        color: state.selected ? 'var(--color-gray-100)' : 'inherit', // Change text color of selected option
+      }}
+    >
+      {option.name}
+    </li>
+  )}
+/>
+
           <Box className={styles.buttonContainer}>
             <ReusableButton
               className={styles.buttonSecondary}
