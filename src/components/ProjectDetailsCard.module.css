@@ -1,0 +1,54 @@
+.detailsCardContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #242424;
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .detailsCard {
+    background-color: #333333 !important;
+    color: white;
+    width: 80%;
+    max-width: 1000px;
+    padding: 20px;
+    border: 2px solid #444444;
+  }
+  
+  .projectName {
+    color: #fab833;
+    margin-bottom: 16px;
+    font-weight: bold;
+  }
+  
+  .projectManager {
+    color: gray;
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+  
+  .sectionHeader {
+    color: #fab833;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .descriptionText {
+    color: lightgray;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .developerList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .developerItem {
+    color: lightgray;
+    font-size: 18px;
+    margin: 4px 0;
+  }
+  

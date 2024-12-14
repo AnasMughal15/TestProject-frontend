@@ -1,66 +1,68 @@
-// import { redirect } from "react-router-dom";
-// import CreateButton from "../components/Button";
-// import OutlinedCard from "../components/ProductCard";
-
-// function HomePage(){
-//     return (
-//         <>
-//         <CreateButton />
-//         <OutlinedCard />
-//         <OutlinedCard />
-//         <OutlinedCard />
-//         <OutlinedCard />
-//         </>
-//     )
-// }
-// export default HomePage;
-
-// pages/HomePage.js
 import React, { useState, useEffect } from "react";
 import OutlinedCard from "../components/ProductCard";
 import ReusableButton from "../components/Button";
 import ReusableModal from "../components/Modal";
-import "./Home.module.css";
+import styles from "./Home.module.css";
 import { isManager } from "../util/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [projects, setProjects] = useState([]);
   const [isEditMode, setIsEditMode] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
+  const [pagination, setPagination] = useState({
+    totalPages: 1,
+    currentPage: 1,
+    totalProjects: 0,
+  });
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+  const userIsManager = isManager();
 
- const userIsManager = isManager();
- 
-  const handleOpenModal = () => {
-    setIsEditMode(false)
   
+  const handleOpenModal = () => {
+    setIsEditMode(false);
     setModalOpen(true);
   };
+
   const handleOpenModalEdit = (project) => {
-    setIsEditMode(true)
-    setCurrentProject(project)
+    setIsEditMode(true);
+    setCurrentProject(project);
     setModalOpen(true);
-  };  
-  // useEffect(() => {
-  //   console.log("isEditMode updated:", isEditMode);
-  // }, [isEditMode]);
+  };
+
   const handleCloseModal = () => setModalOpen(false);
 
-  // Make the GET request to fetch the projects list
-  const fetchProjects = async () => {
+  const handleShow = (project) => {
+    navigate(`/project/${project.name}`, { state: project });
+  };
+
+  
+  const fetchProjects = async (page = 1, perPage = 5, search = "") => {
     try {
-      const response = await fetch("http://127.0.0.1:3000/projects", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const response = await fetch(
+        `http://127.0.0.1:3000/projects?page=${page}&per_page=${perPage}&search=${encodeURIComponent(search)}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch projects");
       }
       const data = await response.json();
-      setProjects(data); // Store projects in state
+      setProjects(data.projects); // Store projects in state
+      setPagination({
+        totalPages: data.pagination.total_pages,
+        currentPage: data.pagination.current_page,
+        totalProjects: data.pagination.total_projects,
+      });
+      
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
   };
+  
 
   const handleDelete = async (projectId) => {
     try {
@@ -76,48 +78,76 @@ function HomePage() {
       if (!response.ok) {
         throw new Error("Failed to delete project");
       }
-      console.log(`Project ${projectId} deleted`);
-        // setProjects((prevProjects) => prevProjects.filter((project) => project.id !== projectId));
-      fetchProjects();
+      fetchProjects(pagination.currentPage); // Refresh projects after deletion
     } catch (error) {
       console.error("Error deleting project:", error);
     }
   };
 
   const handleModalSubmit = () => {
-    
     setModalOpen(false);
-    fetchProjects();
+    fetchProjects(pagination.currentPage); // Refresh the projects after submit
+  };
+
+  // Handle search input change and debounce
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   useEffect(() => {
-    fetchProjects();
-  }, []);
+    const delayDebounceFn = setTimeout(() => {
+      fetchProjects(1, 5, searchTerm);
+    }, 250); 
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm]);
+
+  // useEffect(() => {
+  //   fetchProjects(); // Fetch projects on component mount
+  // }, []);
+
+  const goToPage = (page) => {
+    fetchProjects(page, 5, searchTerm);
+  };
 
   return (
     <>
-      { userIsManager &&  <ReusableButton className="buttonCreate" onClick={handleOpenModal}>
-        Create a Project
-      </ReusableButton>}
+      {userIsManager && (
+        <ReusableButton className={styles.buttonCreate} onClick={handleOpenModal}>
+          Create a Project
+        </ReusableButton>
+      )}
 
-      {/* Dynamically render OutlinedCard components */}
-      {projects.length > 0 ? (
+      <form onSubmit={(e) => e.preventDefault()} className={styles.search}>
+        <input
+          type="text"
+          placeholder="Search projects..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </form>
+
+     
+      {true ? (
         projects.map((project) => (
           <OutlinedCard
             key={project.id}
             index={project.id}
             name={project.name}
             description={project.description}
-            manager_id={project.manager_id}
+            manager_name={project.manager_name}
             onDelete={() => handleDelete(project.id)}
             onEdit={() => handleOpenModalEdit(project)}
+            onShow={() => handleShow(project)}
             userIsManager={userIsManager}
           />
         ))
       ) : (
-        <p>No projects available</p> // Display a message if no projects are found
+        <p>No projects available</p>
       )}
 
+     
+      {/* Modal */}
       <ReusableModal
         open={isModalOpen}
         handleClose={handleCloseModal}
@@ -125,6 +155,19 @@ function HomePage() {
         isEditMode={isEditMode}
         project={currentProject}
       />
+       {/* Pagination */}
+       <div className={styles.pagination}>
+        {Array.from({ length: pagination.totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => goToPage(i + 1)}
+            className={pagination.currentPage === i + 1 ? "active" : ""}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
+
     </>
   );
 }

@@ -1,0 +1,118 @@
+.bugModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .bugModalContent {
+    background-color: var(--color-gray-900);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bugModalHeader {
+    margin: 0 0 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .bugModalLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .bugModalInput,
+  .bugModalTextarea,
+  .bugModalSelect {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #504f4f;
+  }
+  
+  .bugModalTextarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .bugModalRadio {
+    margin-right: 5px;
+  }
+  
+  .bugModalButtons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .bugModalError {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  .ErrorMessage{
+    color: red;
+  }
+  .existingImages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .imagePreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .imageContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .imageThumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imageActions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+  
+  .previewIcon,
+  .deleteIcon {
+    cursor: pointer;
+    color: #555;
+  }
+  
+  .previewIcon:hover {
+    color: #2196f3; /* Blue */
+  }
+  
+  .deleteIcon:hover {
+    color: #f44336; /* Red */
+  }
+  

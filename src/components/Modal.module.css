@@ -35,8 +35,8 @@
     color: rgba(255, 255, 255, 0.8); /* Near white for label */
   }
   
-  .modalInput .MuiInputBase-input {
-    color: var(--color-gray-100); /* Input text near-white */
+  .modalInput {
+    color: white !important; /* Input text near-white */
   }
   
   .modalInput:focus-within {
@@ -73,7 +73,7 @@
   
   .buttonPrimary {
     background-color: var(--color-primary-600);
-    color: var(--color-gray-900);
+    color: red !important;
     border: none;
   }
   
@@ -90,5 +90,14 @@
   .buttonSecondary:hover {
     background-color: var(--color-gray-700);
   }
-  
-  
+
+
+
+.MuiAutocomplete-option.Mui-focused, .MuiAutocomplete-option.Mui-selected {
+  color: var(--color-gray-100) !important; /* Set the selected text color */
+}
+
+/* Optional: style selected option background */
+.MuiAutocomplete-option.Mui-focused, .MuiAutocomplete-option.Mui-selected:hover {
+  background-color: rgba(0, 123, 255, 0.1) !important; /* Customize the background on hover */
+}

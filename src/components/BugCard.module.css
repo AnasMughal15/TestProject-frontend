@@ -1,0 +1,85 @@
+.cardContainer {
+    display: flex;
+    margin-left: 20%;
+    background-color: #242424;
+  }
+.bugCard {
+    background-color: #333333;
+    color: white;
+    border-radius: 8px;
+    border: 1px solid #444444;
+    padding: 15px;
+    margin: 10px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .bugTable {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .cardContent {
+    margin-bottom: 15px;
+  }
+  
+  .cardContent h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .cardContent p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .cardActions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  
+  .cardActions button {
+    background-color: #FAB833;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .cardActions button:hover {
+    background-color: #F59E42;
+  }
+  
+  .bugCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  .attachments {
+    margin-top: 16px;
+  }
+  
+  .attachmentItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #333333;
+    margin-bottom: 8px;
+    color: #ccc;
+  }
+  
+  .attachmentItem span {
+    font-size: 16px;
+    color: #ccc;
+    flex: 1;
+  }
+  
