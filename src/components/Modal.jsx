@@ -35,7 +35,7 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
   useEffect(() => {
     if (open) {
       // Fetch all developers for selection
-      fetchData("http://127.0.0.1:3000/developers").then((data) => {
+      fetchData(`${process.env.REACT_APP_API_URL}/developers`).then((data) => {
         if (data) setUsers(data);
       });
 
@@ -60,8 +60,8 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
     };
 
     const apiUrl = isEditMode
-      ? `http://127.0.0.1:3000/projects/${project.id}`
-      : "http://127.0.0.1:3000/projects";
+      ? `${process.env.REACT_APP_API_URL}/projects/${project.id}`
+      : `${process.env.REACT_APP_API_URL}/projects`;
     const apiMethod = isEditMode ? "PUT" : "POST";
 
     fetchData(apiUrl, apiMethod, projectData).then(onSubmit);
@@ -76,11 +76,11 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
 
     removedUsers.forEach((user) => {
       fetchData(
-        `http://127.0.0.1:3000/project_users/${project.id}/${user.id}`,
+        `${process.env.REACT_APP_API_URL}/project_users/${project.id}/${user.id}`,
         "DELETE"
       ).then(() => {
         // Refetch updated developer list if necessary
-        fetchData("http://127.0.0.1:3000/developers").then((data) => {
+        fetchData(`${process.env.REACT_APP_API_URL}/developers`).then((data) => {
           if (data) setUsers(data);
         });
       });

@@ -26,7 +26,7 @@ export async function action({ request }) {
     user_type: data.get('userType'),
   };
 
-  const response = await fetch('http://localhost:3000/' + mode, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/` + mode, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
