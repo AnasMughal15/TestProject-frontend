@@ -42,7 +42,7 @@ function HomePage() {
   const fetchProjects = async (page = 1, perPage = 5, search = "") => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/projects?page=${page}&per_page=${perPage}&search=${encodeURIComponent(search)}`,
+        `${import.meta.env.VITE_API_URL}/projects?page=${page}&per_page=${perPage}&search=${encodeURIComponent(search)}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -67,7 +67,7 @@ function HomePage() {
   const handleDelete = async (projectId) => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/projects/${projectId}`,
+        `${import.meta.env.VITE_API_URL}/projects/${projectId}`,
         {
           method: "DELETE",
           headers: {

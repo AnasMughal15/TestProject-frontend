@@ -13,7 +13,7 @@ function BugCard({ bug, onEdit, onDelete, statusChange }) {
   const userIsQA = isQA();
 
   const handlePreviewImage = (imgPath) => {
-    const fileUrl = `${process.env.REACT_APP_API_URL}/uploads/attachments/${bug.id}/` + imgPath.file_name;
+    const fileUrl = `${import.meta.env.VITE_API_URL}/uploads/attachments/${bug.id}/` + imgPath.file_name;
     window.open(fileUrl, "_blank");
   };
 

@@ -30,7 +30,7 @@ function ProjectDetailsPage() {
   const fetchBugs = (page = 1, perPage = 5, search = "") => {
     if (project) {
       const token = localStorage.getItem("token");
-      const url = `${process.env.REACT_APP_API_URL}/projects/${project.id}/bugs?page=${page}&per_page=${perPage}&search=${encodeURIComponent(search)}`;
+      const url = `${import.meta.env.VITE_API_URL}/projects/${project.id}/bugs?page=${page}&per_page=${perPage}&search=${encodeURIComponent(search)}`;
   
       fetch(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -94,8 +94,8 @@ function ProjectDetailsPage() {
   const handleSaveBug = (bugData, bugId) => {
     const method = (isEditMode || bugId) ? "PUT" : "POST";
     const url = (isEditMode || bugId)
-      ? `${process.env.REACT_APP_API_URL}/projects/${project.id}/bugs/${bugId}`
-      : `${process.env.REACT_APP_API_URL}/projects/${project.id}/bugs`;
+      ? `${import.meta.env.VITE_API_URL}/projects/${project.id}/bugs/${bugId}`
+      : `${import.meta.env.VITE_API_URL}/projects/${project.id}/bugs`;
   
     fetch(url, {
       method: method,
@@ -127,7 +127,7 @@ function ProjectDetailsPage() {
   
 
   const handleDeleteBug = (bugId) => {
-    fetch(`${process.env.REACT_APP_API_URL}/projects/${project.id}/bugs/${bugId}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/projects/${project.id}/bugs/${bugId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

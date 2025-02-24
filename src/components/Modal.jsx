@@ -35,7 +35,7 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
   useEffect(() => {
     if (open) {
       // Fetch all developers for selection
-      fetchData(`${process.env.REACT_APP_API_URL}/developers`).then((data) => {
+      fetchData(`${import.meta.env.VITE_API_URL}/developers`).then((data) => {
         if (data) setUsers(data);
       });
 
@@ -60,8 +60,8 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
     };
 
     const apiUrl = isEditMode
-      ? `${process.env.REACT_APP_API_URL}/projects/${project.id}`
-      : `${process.env.REACT_APP_API_URL}/projects`;
+      ? `${import.meta.env.VITE_API_URL}/projects/${project.id}`
+      : `${import.meta.env.VITE_API_URL}/projects`;
     const apiMethod = isEditMode ? "PUT" : "POST";
 
     fetchData(apiUrl, apiMethod, projectData).then(onSubmit);
@@ -76,11 +76,11 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
 
     removedUsers.forEach((user) => {
       fetchData(
-        `${process.env.REACT_APP_API_URL}/project_users/${project.id}/${user.id}`,
+        `${import.meta.env.VITE_API_URL}/project_users/${project.id}/${user.id}`,
         "DELETE"
       ).then(() => {
         // Refetch updated developer list if necessary
-        fetchData(`${process.env.REACT_APP_API_URL}/developers`).then((data) => {
+        fetchData(`${import.meta.env.VITE_API_URL}/developers`).then((data) => {
           if (data) setUsers(data);
         });
       });
