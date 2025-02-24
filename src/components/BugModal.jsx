@@ -191,7 +191,7 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
 
   useEffect(() => {
     if (isOpen && projectId) {
-      fetch(`${process.env.REACT_APP_API_URL}/projects/${projectId}/developers`, {
+      fetch(`${import.meta.env.VITE_API_URL}/projects/${projectId}/developers`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
         .then((response) => response.json())
@@ -222,14 +222,14 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
   }, [isOpen, bug, projectId]);
 
   const handlePreviewImage = (imgPath) => {
-    const fileUrl = `${process.env.REACT_APP_API_URL}/uploads/attachments/${bug.id}/` +  imgPath.file_name;
+    const fileUrl = `${import.meta.env.VITE_API_URL}/uploads/attachments/${bug.id}/` +  imgPath.file_name;
     window.open(fileUrl, "_blank");
   };
   
   
   
   const handleRemoveExistingImage = (imgPath) => {
-    fetch(`${process.env.REACT_APP_API_URL}/attachments/${imgPath.id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/attachments/${imgPath.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
