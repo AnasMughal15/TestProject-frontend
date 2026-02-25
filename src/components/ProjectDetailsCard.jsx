@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import styles from "./ProjectDetailsCard.module.css";
+import t from "../locales/en.json";
 
 export default function ProjectDetailsCard({ project, name, manager_name, description, assignedDevelopers }) {
   return (
@@ -11,19 +12,19 @@ export default function ProjectDetailsCard({ project, name, manager_name, descri
       <Card className={styles.detailsCard}>
         <CardContent>
           <Typography variant="h4" component="h1" className={styles.projectName}>
-            Project Name: {project.name}
+            {t.projectDetails.label_projectName} {project.name}
           </Typography>
           <Typography variant="h6" className={styles.projectManager}>
-            Project Manager: {project.manager_name}
+            {t.projectDetails.label_projectManager} {project.manager_name}
           </Typography>
           <Typography variant="h6" className={styles.sectionHeader}>
-            Description:
+            {t.projectDetails.label_description}
           </Typography>
           <Typography variant="body1" className={styles.descriptionText}>
             {project.description}
           </Typography>
           <Typography variant="h6" className={styles.sectionHeader}>
-            Assigned Developers:
+            {t.projectDetails.label_assignedDevelopers}
           </Typography>
           <ul className={styles.developerList}>
             {project.developers && project.developers.length > 0 ? (
@@ -33,7 +34,7 @@ export default function ProjectDetailsCard({ project, name, manager_name, descri
                 </li>
               ))
             ) : (
-              <li className={styles.developerItem}>No developers assigned</li>
+              <li className={styles.developerItem}>{t.projectDetails.no_developers}</li>
             )}
           </ul>
         </CardContent>

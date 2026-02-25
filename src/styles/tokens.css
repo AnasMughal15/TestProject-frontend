@@ -1,0 +1,45 @@
+/* ── Design tokens ────────────────────────────────────────────────────────── *
+ * Global CSS custom properties available in every CSS file.                  *
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Backgrounds */
+  --bg-page:    #242424;
+  --bg-surface: #1e1e1e;
+  --bg-raised:  #2a2a2a;
+  --bg-deep:    #1a1a1a;
+  --bg-hover:   #2e2e2e;
+
+  /* Borders */
+  --border:     #2e2e2e;
+  --border-mid: #3a3a3a;
+
+  /* Text */
+  --txt-primary:   #f4f3f1;
+  --txt-secondary: #e8e6e4;
+  --txt-muted:     #aeaba7;
+  --txt-dim:       #656360;
+  --txt-ghost:     #cebfbf;
+  --txt-on-dark:   #1a1a1a;
+
+  /* Accent colours */
+  --gold:   #fab833;
+  --gold-h: #f9c762;
+  --indigo: #6366f1;
+  --green:  #22c55e;
+  --red:      #ef4444;
+  --red-t:    #f87171;
+  --purple:   #a855f7;
+  --purple-h: #c084fc;
+
+  /* Typography */
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* Icon sizes */
+  --icon-xs: 0.75rem;
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+  --icon-lg: 1.75rem;
+}

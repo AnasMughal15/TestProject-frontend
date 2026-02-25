@@ -1,6 +1,7 @@
 import { Form, NavLink, useRouteLoaderData } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
+import t from '../locales/en.json';
 // import NewsletterSignup from './NewsletterSignup';
 
 function MainNavigation() {
@@ -18,7 +19,7 @@ function MainNavigation() {
               }
               end
             >
-              Home
+              {t.nav.home}
             </NavLink>
           </li>
           {!token && (
@@ -29,14 +30,14 @@ function MainNavigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                Authentication
+                {t.nav.authentication}
               </NavLink>
             </li>
           )}
           {token && (
             <li>
               <Form action="/logout" method="post">
-                <button>Logout</button>
+                <button>{t.nav.logout}</button>
               </Form>
             </li>
           )}

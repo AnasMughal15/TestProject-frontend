@@ -78,7 +78,7 @@
 
 //   const validateForm = () => {
 //     let formErrors = {};
-//     if (!bugType) formErrors.bugType = "Bug type cannot be blank";
+//     if (!bugType) formErrors.bugType = t.bugModal.error_bugTypeBlank;
 //     setErrors(formErrors);
 //     return Object.keys(formErrors).length === 0;
 //   };
@@ -88,21 +88,21 @@
 //       <div className={styles.bugModalContent}>
 //         <h2 className={styles.bugModalHeader}>{bug ? "Update Bug" : "Create Bug"}</h2>
 //         {error && <div className={styles.ErrorMessage}>{error}</div>}
-//         <label className={styles.bugModalLabel}>Title:</label>
+//         <label className={styles.bugModalLabel}>{t.bugModal.label_title}</label>
 //         <input
 //           type="text"
 //           className={styles.bugModalInput}
 //           value={title}
 //           onChange={(e) => setTitle(e.target.value)}
 //         />
-//         <label className={styles.bugModalLabel}>Description:</label>
+//         <label className={styles.bugModalLabel}>{t.bugModal.label_description}</label>
 //         <textarea
 //           className={styles.bugModalTextarea}
 //           value={description}
 //           onChange={(e) => setDescription(e.target.value)}
 //         />
 //         <div>
-//           <label className={styles.bugModalLabel}>Bug Type:</label>
+//           <label className={styles.bugModalLabel}>{t.bugModal.label_bugType}</label>
 //           <div>
 //             <input
 //               type="radio"
@@ -113,7 +113,7 @@
 //               checked={bugType === "bug"}
 //               onChange={() => setBugType("bug")}
 //             />
-//             <label htmlFor="bug">Bug</label>
+//             <label htmlFor="bug">{t.bugModal.type_bug}</label>
 //             <input
 //               type="radio"
 //               id="feature"
@@ -123,11 +123,11 @@
 //               checked={bugType === "feature"}
 //               onChange={() => setBugType("feature")}
 //             />
-//             <label htmlFor="feature">Feature</label>
+//             <label htmlFor="feature">{t.bugModal.type_feature}</label>
 //           </div>
 //           {errors.bugType && <p className={styles.bugModalError}>{errors.bugType}</p>}
 //         </div>
-//         <label className={styles.bugModalLabel}>Status:</label>
+//         <label className={styles.bugModalLabel}>{t.bugModal.label_status}</label>
 //         <select 
 //           className={styles.bugModalSelect} 
 //           value={status} 
@@ -147,13 +147,13 @@
 //           )}
 //         </select>
 
-//         <label className={styles.bugModalLabel}>Assignee:</label>
+//         <label className={styles.bugModalLabel}>{t.bugModal.label_assignee}</label>
 //         <select
 //           className={styles.bugModalSelect}
 //           value={assigneeId}
 //           onChange={(e) => setAssigneeId(e.target.value)}
 //         >
-//           <option value="">Select Assignee</option>
+//           <option value="">{t.bugModal.placeholder_selectAssignee}</option>
 //           {developers.map((dev) => (
 //             <option key={dev.id} value={dev.id}>
 //               {dev.name}
@@ -177,6 +177,7 @@ import { useParams } from "react-router-dom";
 import ReusableButton from "../components/Button";
 import styles from './BugModal.module.css';
 import { Preview, Delete } from "@mui/icons-material";
+import t from '../locales/en.json';
 
 const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, error }) => {
   const [title, setTitle] = useState("");
@@ -291,7 +292,7 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
 
   const validateForm = () => {
     let formErrors = {};
-    if (!bugType) formErrors.bugType = "Bug type cannot be blank";
+    if (!bugType) formErrors.bugType = t.bugModal.error_bugTypeBlank;
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
@@ -300,24 +301,24 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
     <div className={styles.bugModal}>
       <div className={styles.bugModalContent}>
         <h2 className={styles.bugModalHeader}>
-          {bug ? "Update Bug" : "Create Bug"}
+          {bug ? t.bugModal.title_update : t.bugModal.title_create}
         </h2>
         {error && <div className={styles.ErrorMessage}>{error}</div>}
-        <label className={styles.bugModalLabel}>Title:</label>
+        <label className={styles.bugModalLabel}>{t.bugModal.label_title}</label>
         <input
           type="text"
           className={styles.bugModalInput}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label className={styles.bugModalLabel}>Description:</label>
+        <label className={styles.bugModalLabel}>{t.bugModal.label_description}</label>
         <textarea
           className={styles.bugModalTextarea}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <div>
-          <label className={styles.bugModalLabel}>Bug Type:</label>
+          <label className={styles.bugModalLabel}>{t.bugModal.label_bugType}</label>
           <div>
             <input
               type="radio"
@@ -328,7 +329,7 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
               checked={bugType === "bug"}
               onChange={() => setBugType("bug")}
             />
-            <label htmlFor="bug">Bug</label>
+            <label htmlFor="bug">{t.bugModal.type_bug}</label>
             <input
               type="radio"
               id="feature"
@@ -338,13 +339,13 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
               checked={bugType === "feature"}
               onChange={() => setBugType("feature")}
             />
-            <label htmlFor="feature">Feature</label>
+            <label htmlFor="feature">{t.bugModal.type_feature}</label>
           </div>
           {errors.bugType && (
             <p className={styles.bugModalError}>{errors.bugType}</p>
           )}
         </div>
-        <label className={styles.bugModalLabel}>Status:</label>
+        <label className={styles.bugModalLabel}>{t.bugModal.label_status}</label>
         <select
           className={styles.bugModalSelect}
           value={status}
@@ -352,26 +353,26 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
         >
           {bugType === "bug" ? (
             <>
-              <option value="new">New</option>
-              <option value="started">Started</option>
-              <option value="resolved">Resolved</option>
+              <option value="new">{t.bugModal.status_new}</option>
+              <option value="started">{t.bugModal.status_started}</option>
+              <option value="resolved">{t.bugModal.status_resolved}</option>
             </>
           ) : (
             <>
-              <option value="new">New</option>
-              <option value="started">Started</option>
-              <option value="completed">Completed</option>
+              <option value="new">{t.bugModal.status_new}</option>
+              <option value="started">{t.bugModal.status_started}</option>
+              <option value="completed">{t.bugModal.status_completed}</option>
             </>
           )}
         </select>
 
-        <label className={styles.bugModalLabel}>Assignee:</label>
+        <label className={styles.bugModalLabel}>{t.bugModal.label_assignee}</label>
         <select
           className={styles.bugModalSelect}
           value={assigneeId}
           onChange={(e) => setAssigneeId(e.target.value)}
         >
-          <option value="">Select Assignee</option>
+          <option value="">{t.bugModal.placeholder_selectAssignee}</option>
           {developers.map((dev) => (
             <option key={dev.id} value={dev.id}>
               {dev.name}
@@ -408,7 +409,7 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
 
         {existingImages.length > 0 && (
           <div>
-            <h3>Existing Attachments:</h3>
+            <h3>{t.bugModal.label_existingAttachments}</h3>
             <div className={styles.existingImages}>
               {existingImages.map((imgPath, index) => {
                 const fileName = imgPath.file_name; // Extract file name from path
@@ -432,7 +433,7 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
           </div>
         )}
 
-        <label className={styles.bugModalLabel}>Attach Images:</label>
+        <label className={styles.bugModalLabel}>{t.bugModal.label_attachImages}</label>
         <input
           type="file"
           className={styles.bugModalInput}
@@ -441,9 +442,9 @@ const BugModal = ({ projectId, isOpen, onClose, bug = '', onSave, isEditMode, er
           onChange={handleImageChange}
         />
         <div className={styles.bugModalButtons}>
-          <ReusableButton onClick={onClose}>Cancel</ReusableButton>
+          <ReusableButton onClick={onClose}>{t.bugModal.btn_cancel}</ReusableButton>
           <ReusableButton onClick={handleSave}>
-            {bug ? "Update" : "Create"}
+            {bug ? t.bugModal.btn_update : t.bugModal.btn_create}
           </ReusableButton>
         </div>
       </div>
