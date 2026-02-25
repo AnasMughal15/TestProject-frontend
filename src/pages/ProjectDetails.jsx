@@ -6,6 +6,7 @@ import BugCard from "../components/BugCard";
 import BugModal from "../components/BugModal"; // Import the Bug Modal
 import styles from './ProjectDetails.module.css';
 import { isQA } from "../util/auth";
+import t from "../locales/en.json";
 
 function ProjectDetailsPage() {
   const [bugs, setBugs] = useState([]);
@@ -150,17 +151,17 @@ function ProjectDetailsPage() {
       <ProjectDetailsCard project={project} />
       <div className={styles.bugSection}>
         {userIsQA && (
-          <ReusableButton onClick={handleCreateBug}>Create Bug</ReusableButton>
+          <ReusableButton onClick={handleCreateBug}>{t.projectDetails.btn_createBug}</ReusableButton>
         )}
         <form onSubmit={handleSearch} className={styles.search}>
           <input
             type="text"
-            placeholder="Search bugs..."
+            placeholder={t.projectDetails.placeholder_search}
             value={searchTerm}
             onChange={handleSearchChange} // Call the search handler with debounce
           />
           <ReusableButton type="submit" onClick={handleSearch}>
-            Search
+            {t.projectDetails.btn_search}
           </ReusableButton>
         </form>
 
@@ -175,7 +176,7 @@ function ProjectDetailsPage() {
           />
         )) 
           : <div className={styles.noBugs}>
-            <p>No bugs Found</p>
+            <p>{t.projectDetails.no_bugs}</p>
           </div>
 
          }

@@ -4,6 +4,7 @@ import ReusableButton from "../components/Button";
 import ReusableModal from "../components/Modal";
 import styles from "./Home.module.css";
 import { isManager } from "../util/auth";
+import t from "../locales/en.json";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function HomePage() {
@@ -114,14 +115,14 @@ function HomePage() {
     <>
       {userIsManager && (
         <ReusableButton className={styles.buttonCreate} onClick={handleOpenModal}>
-          Create a Project
+          {t.home.btn_createProject}
         </ReusableButton>
       )}
 
       <form onSubmit={(e) => e.preventDefault()} className={styles.search}>
         <input
           type="text"
-          placeholder="Search projects..."
+          placeholder={t.home.placeholder_search}
           value={searchTerm}
           onChange={handleSearch}
         />
@@ -143,7 +144,7 @@ function HomePage() {
           />
         ))
       ) : (
-        <p>No projects available</p>
+        <p>{t.home.no_projects}</p>
       )}
 
      

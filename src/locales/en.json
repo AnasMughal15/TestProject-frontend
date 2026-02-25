@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "Home",
+    "authentication": "Authentication",
+    "logout": "Logout"
+  },
+  "auth": {
+    "title_login": "Log in",
+    "title_signup": "Create a new user",
+    "label_email": "Email",
+    "label_password": "Password",
+    "label_name": "Name",
+    "label_userType": "User Type",
+    "role_developer": "Developer",
+    "role_manager": "Manager",
+    "role_qa": "QA",
+    "link_createUser": "Create new user",
+    "link_login": "Login",
+    "btn_submitting": "Submitting...",
+    "btn_save": "Save"
+  },
+  "home": {
+    "btn_createProject": "Create a Project",
+    "placeholder_search": "Search projects...",
+    "no_projects": "No projects available"
+  },
+  "projectModal": {
+    "title_create": "Create a Project",
+    "title_edit": "Edit Project",
+    "label_projectName": "Project Name",
+    "label_description": "Description",
+    "label_assignDevelopers": "Assign Developers",
+    "btn_cancel": "Cancel",
+    "btn_submit": "Submit",
+    "btn_update": "Update"
+  },
+  "productCard": {
+    "btn_show": "Show",
+    "btn_edit": "Edit",
+    "btn_delete": "Delete"
+  },
+  "projectDetails": {
+    "label_projectName": "Project Name:",
+    "label_projectManager": "Project Manager:",
+    "label_description": "Description:",
+    "label_assignedDevelopers": "Assigned Developers:",
+    "no_developers": "No developers assigned",
+    "btn_createBug": "Create Bug",
+    "placeholder_search": "Search bugs...",
+    "btn_search": "Search",
+    "no_bugs": "No bugs Found"
+  },
+  "bugModal": {
+    "title_create": "Create Bug",
+    "title_update": "Update Bug",
+    "label_title": "Title:",
+    "label_description": "Description:",
+    "label_bugType": "Bug Type:",
+    "type_bug": "Bug",
+    "type_feature": "Feature",
+    "label_status": "Status:",
+    "status_new": "New",
+    "status_started": "Started",
+    "status_resolved": "Resolved",
+    "status_completed": "Completed",
+    "label_assignee": "Assignee:",
+    "placeholder_selectAssignee": "Select Assignee",
+    "label_existingAttachments": "Existing Attachments:",
+    "label_attachImages": "Attach Images:",
+    "btn_cancel": "Cancel",
+    "btn_create": "Create",
+    "btn_update": "Update",
+    "error_bugTypeBlank": "Bug type cannot be blank"
+  },
+  "bugCard": {
+    "label_description": "Description:",
+    "label_type": "Type:",
+    "label_creator": "Creator:",
+    "label_status": "Status:",
+    "label_assignee": "Assignee:",
+    "unassigned": "Unassigned",
+    "label_attachments": "Attachments:",
+    "btn_preview": "Preview",
+    "btn_edit": "Edit",
+    "btn_delete": "Delete"
+  },
+  "errors": {
+    "title_generic": "An error occurred!",
+    "message_generic": "Something went wrong!",
+    "title_notFound": "Not found!",
+    "message_notFound": "Could not find resource or page.",
+    "auth_failed": "Could not authenticate user.",
+    "unsupported_mode": "Unsupported mode."
+  }
+}

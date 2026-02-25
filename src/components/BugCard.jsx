@@ -2,6 +2,7 @@ import React from 'react';
 import ReusableButton from './Button';
 import styles from './BugCard.module.css';
 import { isDeveloper, isManager, isQA } from '../util/auth';
+import t from '../locales/en.json';
 
 function BugCard({ bug, onEdit, onDelete, statusChange }) {
   
@@ -29,16 +30,16 @@ function BugCard({ bug, onEdit, onDelete, statusChange }) {
       <div className={styles.bugCard}>
         <div className={styles.cardContent}>
           <h3>{bug.title}</h3>
-          <p><strong>Description:</strong> {bug.description}</p>
+          <p><strong>{t.bugCard.label_description}</strong> {bug.description}</p>
           <table className={styles.bugTable}>
             <tbody>
               <tr>
-                <td><strong>Type:</strong> {bug.bug_type}</td>
-                <td><strong>Creator:</strong> {bug.creator.name}</td>
+                <td><strong>{t.bugCard.label_type}</strong> {bug.bug_type}</td>
+                <td><strong>{t.bugCard.label_creator}</strong> {bug.creator.name}</td>
               </tr>
               <tr>
                 <td>
-                  <strong>Status:</strong> 
+                  <strong>{t.bugCard.label_status}</strong>
                   <select 
                     value={bug.status} 
                     onChange={(e) => onStatusChange(e.target.value)}
@@ -51,14 +52,14 @@ function BugCard({ bug, onEdit, onDelete, statusChange }) {
                     ))}
                   </select>
                 </td>
-                <td><strong>Assignee:</strong> {bug.assignee?.name || "Unassigned"}</td>
+                <td><strong>{t.bugCard.label_assignee}</strong> {bug.assignee?.name || t.bugCard.unassigned}</td>
               </tr>
             </tbody>
           </table>
         </div>
         {bug.attachments?.length > 0 && (
           <div className={styles.attachments}>
-            <h4>Attachments:</h4>
+            <h4>{t.bugCard.label_attachments}</h4>
             {bug.attachments.map((attachment, index) => (
               <div key={index} className={styles.attachmentItem}>
                 <span>{attachment.file_name}</span>
@@ -66,7 +67,7 @@ function BugCard({ bug, onEdit, onDelete, statusChange }) {
                   size="small" 
                   onClick={() => handlePreviewImage(attachment)}
                 >
-                  Preview
+                  {t.bugCard.btn_preview}
                 </ReusableButton>
               </div>
             ))}
@@ -76,10 +77,10 @@ function BugCard({ bug, onEdit, onDelete, statusChange }) {
           {(userIsManager || userIsQA) && (
             <>
               <ReusableButton size="small" onClick={() => onEdit(bug.id)}>
-                Edit
+                {t.bugCard.btn_edit}
               </ReusableButton>
               <ReusableButton size="small" onClick={() => onDelete(bug.id)}>
-                Delete
+                {t.bugCard.btn_delete}
               </ReusableButton>
             </>
           )}

@@ -7,6 +7,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Stack from "@mui/material/Stack";
 import ReusableButton from "./Button";
 import styles from "./Modal.module.css";
+import t from "../locales/en.json";
 
 function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
   const [name, setName] = useState("");
@@ -91,11 +92,11 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
     <Modal open={open} onClose={handleClose}>
       <Box className={styles.modalContainer}>
         <Typography className={styles.modalHeader}>
-          {isEditMode ? "Edit Project" : "Create a Project"}
+          {isEditMode ? t.projectModal.title_edit : t.projectModal.title_create}
         </Typography>
         <Stack spacing={2}>
           <TextField
-            label="Project Name"
+            label={t.projectModal.label_projectName}
             value={name}
             onChange={(e) => setName(e.target.value)}
             sx={{
@@ -106,7 +107,7 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
             className={styles.modalInput}
           />
           <TextField
-            label="Description"
+            label={t.projectModal.label_description}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             multiline
@@ -127,7 +128,7 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
   renderInput={(params) => (
     <TextField
       {...params}
-      label="Assign Developers"
+      label={t.projectModal.label_assignDevelopers}
       className={styles.modalInput}
     />
   )}
@@ -151,13 +152,13 @@ function ReusableModal({ open, handleClose, onSubmit, isEditMode, project }) {
               className={styles.buttonSecondary}
               onClick={handleClose}
             >
-              Cancel
+              {t.projectModal.btn_cancel}
             </ReusableButton>
             <ReusableButton
               className={styles.buttonPrimary}
               onClick={handleSubmit}
             >
-              {isEditMode ? "Update" : "Submit"}
+              {isEditMode ? t.projectModal.btn_update : t.projectModal.btn_submit}
             </ReusableButton>
           </Box>
         </Stack>

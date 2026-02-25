@@ -98,6 +98,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import styles from './ProductCard.module.css';
+import t from '../locales/en.json';
 
 export default function OutlinedCard({ index, name, description, manager_name, onDelete, onEdit, onShow, userIsManager }) {
   return (
@@ -119,16 +120,16 @@ export default function OutlinedCard({ index, name, description, manager_name, o
 
         <CardActions className={styles.cardActions}>
           <Button size="small" className={styles.button} onClick={onShow} >
-            Show
+            {t.productCard.btn_show}
           </Button>
           {userIsManager && (
             <Button size="small" className={styles.button} onClick={onEdit}>
-              Edit
+              {t.productCard.btn_edit}
             </Button>
           )}
           {userIsManager && (
             <Button size="small" className={styles.button} onClick={onDelete}>
-              Delete
+              {t.productCard.btn_delete}
             </Button>
           )}
         </CardActions>
